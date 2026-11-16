@@ -26,6 +26,7 @@
   --accent:#1F3A5F;--accent-ink:#FFFFFF;--band:#1F3A5F;--on-band:#FFFFFF;--mint:#3E8E52;
   --good:#2F7D4A;--bad:#C0392B;--warn:#8F5A00;--on-c:#FFFFFF;
   --burger-bg:#A6453F1f;--burger-fg:#A6453F;--pasta-bg:#C1631E1f;--pasta-fg:#C1631E;--fries-bg:#3E8E521f;--fries-fg:#3E8E52;
+  --x0b:#1F7A8C1f;--x0f:#1F7A8C;--x1b:#7B4FA31f;--x1f:#7B4FA3;--x2b:#A67C001f;--x2f:#A67C00;--x3b:#B5446E1f;--x3f:#B5446E;--x4b:#2F6DB51f;--x4f:#2F6DB5;--x5b:#6B7F2A1f;--x5f:#6B7F2A;
   --font-body:'Vazirmatn',Tahoma,system-ui,sans-serif;
   --font-display:'Lalezar','Vazirmatn',Tahoma,system-ui,sans-serif;
   --shadow:0 6px 18px rgba(33,29,24,.12);
@@ -37,6 +38,7 @@
     --good:#4CC38A;--bad:#F0736A;--warn:#E3A93B;--on-c:#0F1826;
     --burger-bg:#E08A8226;--burger-fg:#E08A82;--pasta-bg:#E69A5626;--pasta-fg:#E69A56;--fries-bg:#6FC28526;--fries-fg:#6FC285;
     --shadow:0 6px 18px rgba(0,0,0,.4);color-scheme:dark;
+    --x0b:#5FC1D626;--x0f:#5FC1D6;--x1b:#B591DB26;--x1f:#B591DB;--x2b:#E3BE4A26;--x2f:#E3BE4A;--x3b:#E884A826;--x3f:#E884A8;--x4b:#7FB0EC26;--x4f:#7FB0EC;--x5b:#A9C25E26;--x5f:#A9C25E;
   }
 }
 :root[data-theme="dark"]{
@@ -45,6 +47,7 @@
     --good:#4CC38A;--bad:#F0736A;--warn:#E3A93B;--on-c:#0F1826;
     --burger-bg:#E08A8226;--burger-fg:#E08A82;--pasta-bg:#E69A5626;--pasta-fg:#E69A56;--fries-bg:#6FC28526;--fries-fg:#6FC285;
     --shadow:0 6px 18px rgba(0,0,0,.4);color-scheme:dark;
+    --x0b:#5FC1D626;--x0f:#5FC1D6;--x1b:#B591DB26;--x1f:#B591DB;--x2b:#E3BE4A26;--x2f:#E3BE4A;--x3b:#E884A826;--x3f:#E884A8;--x4b:#7FB0EC26;--x4f:#7FB0EC;--x5b:#A9C25E26;--x5f:#A9C25E;
 }
 :root[data-theme="light"]{color-scheme:light}
 *,*::before,*::after{box-sizing:border-box}
@@ -95,6 +98,7 @@ main{min-height:0;padding:30px 28px 16px;display:flex;flex-direction:column;gap:
 .c-burger{--cb:var(--burger-bg);--cf:var(--burger-fg)}
 .c-pasta{--cb:var(--pasta-bg);--cf:var(--pasta-fg)}
 .c-fries{--cb:var(--fries-bg);--cf:var(--fries-fg)}
+.c-x0{--cb:var(--x0b);--cf:var(--x0f)}.c-x1{--cb:var(--x1b);--cf:var(--x1f)}.c-x2{--cb:var(--x2b);--cf:var(--x2f)}.c-x3{--cb:var(--x3b);--cf:var(--x3f)}.c-x4{--cb:var(--x4b);--cf:var(--x4f)}.c-x5{--cb:var(--x5b);--cf:var(--x5f)}
 .scroll{flex:1;min-height:0;overflow-y:auto;padding:2px 6px 12px 2px}
 .group h2{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:400;font-size:22px;margin:14px 0 10px;color:var(--ink)}
 .group h2::before{content:"";width:16px;height:16px;border-radius:50%;background:var(--cf)}
@@ -162,6 +166,8 @@ kbd{font-family:var(--font-body);font-size:11.5px;font-weight:700;background:var
 .xform{display:flex;gap:6px}.xform .inp:first-child{flex:1.4}
 .mrow{display:grid;grid-template-columns:minmax(0,1fr) 64px 84px auto;gap:6px;align-items:center;padding:4px 0;border-bottom:1px solid var(--line)}
 .mrow .inp{min-height:38px;padding-inline:8px;font-size:14px}.mrow.add{border-bottom:0}
+.cat-h{display:flex;gap:8px;align-items:center}.cat-h .inp{font-family:var(--font-display);font-size:20px;font-weight:400;min-height:42px}
+.newcat{display:flex;gap:8px;align-items:center}
 .chg{flex:none;min-width:120px;text-align:end;font-size:14px;font-weight:800}
 .btn{min-height:44px;border-radius:14px;border:2px solid var(--line);background:var(--surface);font-weight:700;padding-inline:16px}
 .btn:hover:not(:disabled){border-color:var(--accent)}
@@ -343,16 +349,23 @@ var KEY='gs_bp_panel_v1';
 var DEFMENU=[
  {id:'burger',name:'برگر',items:[['کلاسیک برگر',465],['چیز برگر',485],['بیکن برگر',525],['ماشروم برگر',515],['جوسی برگر',495],['کینگ برگر',775],['چیکن برگر',535],['بیگ مک',525],['آب معدنی',25]]},
  {id:'pasta',name:'پاستا',items:[['چیکن آلفردو',575],['بیف آلفردو',595]]},
- {id:'fries',name:'سیب و سالاد',items:[['سیب مخصوص',525],['سیب با سس قارچ',495],['سیب با دیپ چدار',467],['سالاد سزار سوخاری',545],['سالاد سزار گریل',525]]}
+ {id:'fries',name:'سیب و سالاد',items:[['سیب مخصوص',525],['سیب با سس قارچ',495],['سیب با دیپ چدار',467],['سالاد سزار سوخاری',545],['سالاد سزار گریل',525]]},
+ {id:'extras',name:'اضافیات',col:1,items:[['پنیر اضافه',40],['بیکن اضافه',60],['قارچ اضافه',30],['سس اضافه',15],['دیپ چدار اضافه',45],['بسته‌بندی',5]]}
 ];
 var MENU=[],ITEMS={};
-function defToMenu(){return DEFMENU.map(function(c){return {id:c.id,name:c.name,items:c.items.map(function(x,i){return {u:i,n:x[0],p:x[1],pm:x[2]||null};})};});}
+function defToMenu(){return DEFMENU.map(function(c){return {id:c.id,name:c.name,col:c.col==null?null:c.col,items:c.items.map(function(x,i){return {u:i,n:x[0],p:x[1],pm:x[2]||null};})};});}
 function okMenu(m){
   if(!Array.isArray(m)||!m.length)return null;
   for(var i=0;i<m.length;i++){var c=m[i];if(!c||!c.id||!Array.isArray(c.items))return null;for(var j=0;j<c.items.length;j++){var x=c.items[j];if(!x||typeof x.n!=='string'||!isFinite(x.p)||!isFinite(x.u))return null;}}
   return m;
 }
-function buildItems(){ITEMS={};MENU.forEach(function(c){c.items.forEach(function(x){var k=c.id+'-'+x.u;ITEMS[k]={k:k,n:x.n,p:x.p,pm:x.pm||null,c:c.id,cn:c.name};});});}
+function catCls(c){return c.col!=null?'c-x'+(Number(c.col)%6):'c-'+c.id;}
+function buildItems(){ITEMS={};MENU.forEach(function(c){c.items.forEach(function(x){var k=c.id+'-'+x.u;ITEMS[k]={k:k,n:x.n,p:x.p,pm:x.pm||null,c:c.id,cn:c.name,cls:catCls(c)};});});}
+/* menus saved before the extras list existed get it once; later deletions stay deleted */
+function ensureExtras(){
+  if(st.prefs.extrasSeeded)return;st.prefs.extrasSeeded=true;
+  if(st.menu&&!MENU.some(function(c){return c.id==='extras';})){MENU.push(defToMenu().filter(function(c){return c.id==='extras';})[0]);st.menu=MENU;}
+}
 
 var nf=new Intl.NumberFormat('fa-IR');
 function fmt(n){return nf.format(n);}
@@ -387,7 +400,7 @@ function save(){
   catch(e){storageOk=false;$('#warn').hidden=false;}
 }
 var st=load();
-MENU=st.menu||defToMenu();buildItems();
+MENU=st.menu||defToMenu();ensureExtras();buildItems();
 try{localStorage.setItem(KEY+'_t','1');localStorage.removeItem(KEY+'_t');}catch(e){storageOk=false;$('#warn').hidden=false;}
 
 var draft;
@@ -435,7 +448,7 @@ function calc(){
 var cat='all',query='';
 function renderChips(){
   var h='<button class="chip" data-act="chip" data-c="all" aria-pressed="'+(cat==='all')+'">همه</button>';
-  MENU.forEach(function(c){h+='<button class="chip c-'+c.id+'" data-act="chip" data-c="'+c.id+'" aria-pressed="'+(cat===c.id)+'">'+esc(c.name)+'</button>';});
+  MENU.forEach(function(c){h+='<button class="chip '+catCls(c)+'" data-act="chip" data-c="'+c.id+'" aria-pressed="'+(cat===c.id)+'">'+esc(c.name)+'</button>';});
   $('#chips').innerHTML=h;
 }
 function priceLabel(it){
@@ -444,7 +457,7 @@ function priceLabel(it){
 }
 function tileHTML(it){
   var l=draft.cart[it.k],q=l?l.q:0,sold=!!st.soldOut[it.k];
-  return '<div class="tile c-'+it.c+(q?' on':'')+(sold?' sold':'')+'">'+
+  return '<div class="tile '+it.cls+(q?' on':'')+(sold?' sold':'')+'">'+
     '<button class="tile-main" data-act="add" data-k="'+it.k+'"'+(sold?' disabled':'')+'>'+
       '<span class="t-name">'+esc(it.n)+'</span><span class="t-price">'+priceLabel(it)+'</span></button>'+
     (sold?'<span class="soldtag">ناموجود</span>':'')+
@@ -463,7 +476,7 @@ function visibleGroups(){
 function renderGrid(){
   var gs=visibleGroups(),top=$('#grid').scrollTop;
   var h=gs.map(function(g){
-    return '<div class="group c-'+g.c.id+'">'+(cat==='all'||norm(query)?'<h2>'+esc(g.c.name)+'</h2>':'<div style="height:6px"></div>')+'<div class="grid">'+g.items.map(tileHTML).join('')+'</div></div>';
+    return '<div class="group '+catCls(g.c)+'">'+(cat==='all'||norm(query)?'<h2>'+esc(g.c.name)+'</h2>':'<div style="height:6px"></div>')+'<div class="grid">'+g.items.map(tileHTML).join('')+'</div></div>';
   }).join('');
   $('#grid').innerHTML=h||'<div class="empty"><h3>موردی پیدا نشد</h3><p>کلمه‌ی دیگری را امتحان کن.</p></div>';
   $('#grid').scrollTop=top;
@@ -773,9 +786,9 @@ function editOrder(id){
 }
 function saveMenu(){buildItems();st.menu=MENU;save();}
 function renderMenu(){
-  var h='<div class="panel"><h2>ویرایش منو</h2><p class="hint">قیمت‌ها به هزار تومان. برای آیتمی که دو قیمت دارد، قیمت دوم را هم بنویس. تغییرها همان لحظه ذخیره می‌شود و روی این دستگاه می‌ماند؛ برای نگه‌داشتن آن، نسخه پشتیبان بگیر.</p></div><div class="stock-grid">';
+  var h='<div class="panel"><h2>ویرایش منو</h2><p class="hint">قیمت‌ها به هزار تومان. برای آیتمی که دو قیمت دارد، قیمت دوم را هم بنویس. تغییرها همان لحظه ذخیره می‌شود و روی این دستگاه می‌ماند؛ برای نگه‌داشتن آن، نسخه پشتیبان بگیر.</p></div><div class="panel"><h2>لیست جدید</h2><p class="hint">برای هر دسته‌ی دلخواه (مثلاً نوشیدنی، دسر، اضافیات ویژه) یک لیست بساز و بعد آیتم‌هایش را اضافه کن. نام هر لیست را می‌شود همین‌جا عوض کرد.</p><div class="newcat"><input class="inp" id="ncn" maxlength="24" placeholder="نام لیست جدید" aria-label="نام لیست جدید"><button class="btn sm" data-act="addCat">افزودن لیست</button></div></div><div class="stock-grid">';
   MENU.forEach(function(c){
-    h+='<div class="panel"><h2>'+esc(c.name)+'</h2>'+c.items.map(function(x){
+    h+='<div class="panel"><div class="cat-h"><input class="inp" data-cn="1" data-c="'+c.id+'" value="'+esc(c.name)+'" maxlength="24" aria-label="نام لیست"><button class="btn sm danger" data-act="delCat" data-c="'+c.id+'">حذف لیست</button></div>'+c.items.map(function(x){
       var k=c.id+'-'+x.u;
       return '<div class="mrow"><input class="inp" data-me="n" data-k="'+k+'" value="'+esc(x.n)+'" aria-label="نام"><input class="inp num" data-me="p" data-k="'+k+'" value="'+x.p+'" inputmode="decimal" aria-label="قیمت"><input class="inp num" data-me="pm" data-k="'+k+'" value="'+(x.pm||'')+'" inputmode="decimal" placeholder="قیمت دوم" aria-label="قیمت دوم"><button class="x" data-act="delItem" data-k="'+k+'" aria-label="حذف '+esc(x.n)+'">×</button></div>';
     }).join('')+'<div class="mrow add"><input class="inp" data-ni="n" placeholder="آیتم جدید"><input class="inp num" data-ni="p" inputmode="decimal" placeholder="قیمت"><span></span><button class="btn sm" data-act="addItem" data-c="'+c.id+'">افزودن</button></div></div>';
@@ -804,7 +817,7 @@ async function readFile(){
   try{var f=await fileH.getFile(),t=await f.text();if(!t)return null;var r=JSON.parse(t);return r&&Array.isArray(r.orders)?r:null;}catch(e){return null;}
 }
 function applyData(r){
-  st=sanitize(r);MENU=st.menu||defToMenu();buildItems();initDraft();save();
+  st=sanitize(r);MENU=st.menu||defToMenu();ensureExtras();buildItems();initDraft();save();
   $('#autoPrint').checked=!!st.prefs.autoPrint;renderChips();syncFields();showTab(curTab);
 }
 async function afterGrant(){
@@ -839,6 +852,18 @@ document.addEventListener('click',function(e){
     case 'fileOff':fileH=null;idb('readwrite',function(o){return o.delete('file');}).catch(function(){});$('#fwarn').hidden=true;renderStock();toast('ذخیره‌ی خودکار روی فایل قطع شد');break;
     case 'fperm':if(fileH)fileH.requestPermission({mode:'readwrite'}).then(function(pm){if(pm==='granted')afterGrant();});break;
     case 'restore':$('#rfile').click();break;
+    case 'addCat':var ncn=$('#ncn'),cn=ncn.value.trim();
+      if(!cn){toast('نام لیست را وارد کن');ncn.focus();break;}
+      MENU.push({id:'u'+Date.now().toString(36),name:cn,col:MENU.length%6,items:[]});saveMenu();renderChips();renderMenu();toast('لیست اضافه شد: '+cn);break;
+    case 'delCat':
+      if(MENU.length<=1){toast('حداقل یک لیست باید بماند');break;}
+      twoTap(b,function(){
+        var cid=b.dataset.c,pre=cid+'-';
+        MENU=MENU.filter(function(c5){return c5.id!==cid;});
+        Object.keys(st.soldOut).forEach(function(s2){if(s2.indexOf(pre)===0)delete st.soldOut[s2];});
+        Object.keys(draft.cart).forEach(function(s3){if(s3.indexOf(pre)===0)delete draft.cart[s3];});
+        if(cat===cid)cat='all';
+        persist();saveMenu();renderChips();renderMenu();toast('لیست حذف شد');});break;
     case 'addItem':var arow=b.closest('.mrow'),nm=arow.querySelector('[data-ni="n"]').value.trim(),pr=num(arow.querySelector('[data-ni="p"]').value);
       if(!nm||pr<=0){toast('نام و قیمت را وارد کن');break;}
       var cat2=MENU.filter(function(c3){return c3.id===b.dataset.c;})[0],nu=0;
@@ -911,7 +936,13 @@ renderChips();syncFields();refreshOrderScreen();
 ['#xn','#xa'].forEach(function(q){$(q).addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.ctrlKey&&!e.metaKey){e.preventDefault();addExtra();}});});
 $('#recv').addEventListener('input',function(e){draft.recv=e.target.value;persist();updateChange();});
 document.addEventListener('change',function(e){
-  var t=e.target,f=t.dataset&&t.dataset.me;if(!f)return;
+  var t=e.target;
+  if(t.dataset&&t.dataset.cn){
+    var cc=MENU.filter(function(c){return c.id===t.dataset.c;})[0],nv=t.value.trim();
+    if(!cc)return;if(!nv){t.value=cc.name;return;}
+    cc.name=nv;saveMenu();renderChips();return;
+  }
+  var f=t.dataset&&t.dataset.me;if(!f)return;
   var pp=t.dataset.k.split('-'),cat=MENU.filter(function(c){return c.id===pp[0];})[0];if(!cat)return;
   var it=cat.items.filter(function(x){return String(x.u)===pp[1];})[0];if(!it)return;
   if(f==='n'){var v=t.value.trim();if(!v){t.value=it.n;return;}it.n=v;}
@@ -922,6 +953,7 @@ document.addEventListener('change',function(e){
   }
   saveMenu();
 });
+document.addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target.id==='ncn'){e.preventDefault();var b=document.querySelector('[data-act="addCat"]');if(b)b.click();}});
 $('#rfile').addEventListener('change',function(e){
   var f=e.target.files[0];e.target.value='';if(!f)return;
   var rd=new FileReader();
@@ -929,7 +961,7 @@ $('#rfile').addEventListener('change',function(e){
     try{
       var r=JSON.parse(rd.result);if(!r||!Array.isArray(r.orders))throw 0;
       if(!confirm('همه‌ی اطلاعات فعلی با این نسخه پشتیبان جایگزین می‌شود. ادامه می‌دهی؟'))return;
-      st=sanitize(r);MENU=st.menu||defToMenu();buildItems();initDraft();save();
+      st=sanitize(r);MENU=st.menu||defToMenu();ensureExtras();buildItems();initDraft();save();
       $('#autoPrint').checked=!!st.prefs.autoPrint;renderChips();syncFields();showTab('stock');toast('اطلاعات بازیابی شد');
     }catch(err){toast('فایل پشتیبان معتبر نیست');}
   };
